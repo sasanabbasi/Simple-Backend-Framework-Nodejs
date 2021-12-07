@@ -2,7 +2,7 @@
 
 Please read each note very carefully!
 
-Create a simple CRUD application with ASP NET Core that implements the below model:
+Create a simple CRUD application with Nodejs + ExpressJS + MongoDB + (ReactJS/VueJS/Html) as front that implements the below model:
 ```
 Customer {
 	FirstName
@@ -15,7 +15,8 @@ Customer {
 ```
 ## Must do:
 
-- **Best Practice**: Tdd and Bdd.
+- **Best Practice**: Tdd.
+
 
 
 ### Validations (Must)
@@ -33,7 +34,7 @@ Customer {
 
 ## Nice to do:
 - CQRS is also a plus.
-- You can use MVC Razor or Blazor UI is a plus.
+- You can use React JS or Vue JS.
 - Docker-compose project that loads database service automatically which `docker-compose up`
 - Clean git commits that show the work progress.
 
