@@ -2,7 +2,11 @@ import { Request, Response, NextFunction, Router } from "express";
 import customer from "../Common/Models/customerModel";
 import customerVM from "../Common/ViewModels/customerViewModel";
 import CustomersManager from "../Logic/CustomersManager";
+import RejectHandler from "../Utility/RejectHandler";
 import ResponseHandler from "../Utility/ResponseHandler";
+import { StatusCodes } from 'http-status-codes';
+import validation from "../Middleware/Validation";
+import { CreateCustomerDto, PaginationCustomerDto, UpdateCustomerDto } from './../Common/DTOs/customerDTO';
 const { ObjectId } = require('mongodb');
 
 export class CustomersController {
@@ -19,12 +23,12 @@ export class CustomersController {
 
     init() {
         this.router.get("/", this.getAll);
-        this.router.post("/", this.add);
+        this.router.post("/", validation(CreateCustomerDto, false, true, true), this.add);
         this.router.get("/:id", this.getOne);
-        this.router.put("/:id", this.update);
-        this.router.patch("/:id", this.patch);
+        this.router.put("/:id", validation(UpdateCustomerDto, false, true, true), this.update);
+        this.router.patch("/:id", validation(UpdateCustomerDto, false, true, true), this.patch);
         this.router.delete("/:id", this.delete);
-        this.router.post("/all/:skip/:take", this.getAllByPagination);
+        this.router.post("/all/:skip/:take", validation(PaginationCustomerDto, false, true, true), this.getAllByPagination);
     }
 
     getAll = async (req: Request, res: Response, next: NextFunction) => {
@@ -53,6 +57,8 @@ export class CustomersController {
             ResponseHandler(res, result, null)
         }
         catch (err) {
+            if (err.errmsg && err.errmsg.includes("UNIQUE_EMAIL"))
+                next(RejectHandler({}, "UNIQUE_EMAIL", StatusCodes.CONFLICT));
             next(err);
         }
     };
@@ -89,7 +95,7 @@ export class CustomersController {
 
     getAllByPagination = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            let result = await this.manager.getAllByPagination(req.params.skip, req.params.take, req.body.filter);
+            let result = await this.manager.getAllByPagination(parseInt(req.params.skip), parseInt(req.params.take), req.body);
             ResponseHandler(res, result, null, this.source, this.destination)
         }
         catch (err) {

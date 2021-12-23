@@ -1,4 +1,3 @@
-import { ReasonPhrases, StatusCodes, getReasonPhrase, getStatusCode, } from 'http-status-codes';
 import { Response } from "express";
 import Mapper from "../Common/Mapper";
 
@@ -19,7 +18,6 @@ export default function ResponseHandler(res: Response, data: any, err: any,
         else
             data = Mapper.mapper.map(data, destinationType, sourceType);
     }
-
     res.status(code).send({
         status: code,
         error: error,
