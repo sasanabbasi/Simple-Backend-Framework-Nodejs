@@ -12,7 +12,6 @@ dotenv.config();
 import CustomersController from "./Controller/CustomersController";
 
 // Services
-import BruteForce from "./Middleware/BruteForce";
 import exception from "./Middleware/Exception";
 
 export class App {
@@ -35,16 +34,6 @@ export class App {
         this.express.use(bodyParser.json());
         this.express.use(compression());
         this.express.use(bodyParser.urlencoded({ extended: false }));
-
-        // Brute Force support
-        this.express.use(
-            BruteForce.getGlobalBruteForce.getMiddleware({
-                key: function (req, res, next) {
-                    // prevent too many attempts for the same username
-                    next(req.url);
-                },
-            })
-        );
     }
 
     // Configure API endpoints.
