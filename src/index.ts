@@ -2,19 +2,22 @@ import * as spdy from "spdy";
 import * as fs from "fs";
 import * as debug from "debug";
 import App from "./app";
-import * as dotenv from "dotenv";
-import DBAccess from "./Repository/DBAccess/DBAccess"
-dotenv.config();
+import DBAccess from "./Repository/DBAccess/DBAccess";
+import Mapper from "./Common/Mapper";
 
 let server;
 let port;
 (async function () {
     // Connect to Database
     await DBAccess.connect();
+    console.log("Database Connected Successfully!");
 
     // Set running port
     port = normalizePort(process.env.PORT || 3000);
     App.set("port", port);
+
+    // Initiate Mapper for bindings
+    Mapper.initiate();
 
     var options = {
         // Private key 

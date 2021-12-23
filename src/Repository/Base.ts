@@ -7,12 +7,13 @@ export default abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
     private _db: any;
     public entity: string;
 
-    constructor() {
-        if (DBAccess.ModelInstance) this._db = DBAccess.ModelInstance.db(process.env.DB_NAME);
+    constructor(entity: string) {
+        if (DBAccess.ModelInstance) this._db = DBAccess.ModelInstance.db(process.env.DATABASE_NAME);
         else
             DBAccess.connect().then((modelInstance: any) => {
                 this._db = modelInstance.db(process.env.DATABASE_NAME);
             });
+        this.entity = entity;
     }
 
     async findOne(query: any) {

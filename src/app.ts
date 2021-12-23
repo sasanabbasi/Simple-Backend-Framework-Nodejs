@@ -5,6 +5,8 @@ import * as logger from "morgan";
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import "reflect-metadata";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 // Controllers
 import CustomersController from "./Controller/CustomersController";

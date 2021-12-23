@@ -16,7 +16,8 @@
       "allowUnreachableCode": true,
     },
     "include": [
-      "src/**/*.ts"
+      "src/**/*.ts",
+      "src/*.env"
     ],
     "exclude": [
       "build",

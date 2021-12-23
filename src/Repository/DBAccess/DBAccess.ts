@@ -2,19 +2,21 @@ var MongoClient = require("mongodb").MongoClient;
 
 export default class DBAccess {
     static ModelInstance: any;
+    static connectionIndex: any = 0;
 
     constructor() { }
 
     static async connect() {
         return new Promise((resolve, reject) => {
-            console.log("Database Connection Starting...");
+            if (this.connectionIndex == 0)
+                console.log("Database Connection Starting...");
+            this.connectionIndex++;
             if (DBAccess.ModelInstance) resolve(DBAccess.ModelInstance);
             else
                 MongoClient.connect(
                     process.env.MONGODB_URL,
                     { useNewUrlParser: true },
                     (err, client) => {
-                        console.log("Database Connected Successfully!");
                         DBAccess.ModelInstance = client;
                         resolve(DBAccess.ModelInstance);
                     }
