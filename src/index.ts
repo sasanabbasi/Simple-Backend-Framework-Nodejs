@@ -3,11 +3,14 @@ import * as fs from "fs";
 import * as debug from "debug";
 import App from "./app";
 import * as dotenv from "dotenv";
+import DBAccess from "./Repository/DBAccess/DBAccess"
 dotenv.config();
 
 let server;
 let port;
 (async function () {
+    // Connect to Database
+    await DBAccess.connect();
 
     // Set running port
     port = normalizePort(process.env.PORT || 3000);
