@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "outDir": "build",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "preserveConstEnums": true,
+      "removeComments": true,
+      "sourceMap": true,
+      "skipLibCheck": true,
+      "lib": [
+        "dom",
+        "es2015"
+      ],
+      "allowUnreachableCode": true,
+    },
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "build",
+      "node_modules",
+    ]
+  }
