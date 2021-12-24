@@ -4,7 +4,7 @@ Simple Create CRUD using Nodejs + Express + Mongodb + Typescript
 
 - **TDD**: Using Superagent and Mocha
 
-### Validations (Must)
+### Validations
 
 - Using Decorator and "class-validator" package for Handling validation
 - It use Google LibPhoneNumber for phone number validation and "International Bank Account Number" for Account Number Validation
@@ -27,3 +27,7 @@ For Test:
 ```
 npm test
 ```
+
+### Postman Collection
+
+There is a postman collection in the root and you should import it and test the project.
