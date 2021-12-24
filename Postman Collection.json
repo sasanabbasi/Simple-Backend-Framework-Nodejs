@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "167128d1-b795-4daf-8f90-dc8f267f36e8",
+		"name": "TestChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FirstName\": \"Sasan\",\r\n    \"LastName\": \"Abbasi\",\r\n    \"DateOfBirth\": \"1989-08-04\",\r\n    \"PhoneNumber\": \"+989174855274\",\r\n    \"Email\": \"d3d.abbasi@gmail.com\",\r\n    \"BankAccountNumber\": \"AT483200000012345864\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3010/customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3010",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allCustomers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3010/customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3010",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oneCustomer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3010/customer/61c49b8919ed32cd203b4e95",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3010",
+					"path": [
+						"customer",
+						"61c49b8919ed32cd203b4e95"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeCustomer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3010/customer/61c4a709acb9dace121dc4e8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3010",
+					"path": [
+						"customer",
+						"61c4a709acb9dace121dc4e8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCustomer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FirstName\": \"Sasan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3010/customer/61c49bf319ed32cd203b4e96",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3010",
+					"path": [
+						"customer",
+						"61c49bf319ed32cd203b4e96"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patchCustomer",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FirstName\": \"Sasan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3010/customer/61c49bf319ed32cd203b4e96",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3010",
+					"path": [
+						"customer",
+						"61c49bf319ed32cd203b4e96"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paginationCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phrase\": \"sa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3010/customer/all/0/10",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3010",
+					"path": [
+						"customer",
+						"all",
+						"0",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
