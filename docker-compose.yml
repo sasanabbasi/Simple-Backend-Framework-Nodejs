@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  node:
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: node_dockerfile
+    volumes:
+      - "./:/usr/app/core"
+      - "/usr/app/core/node_modules"
+    expose:
+      - "3010"
+    ports:
+      - "3010:3010"
+    command: pm2-runtime start "npm i && npm run start" --name reqter
+  mongo:
+    container_name: "mongo_reqter"
+    image: "mongo"
+    restart: unless-stopped 
+    ports:
+      - "27018:27017"
+    expose:
+      - 27017
+    volumes:
+      - volume-mongo:/data/db
+volumes:
+  volume-mongo:
+    driver: local

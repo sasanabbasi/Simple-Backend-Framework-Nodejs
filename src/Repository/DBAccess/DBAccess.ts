@@ -18,6 +18,9 @@ export default class DBAccess {
                     { useNewUrlParser: true },
                     (err, client) => {
                         DBAccess.ModelInstance = client;
+
+                        let db = client.db(process.env.DATABASE_NAME);
+                        db.collection("customers").createIndex({ "Email": 1 }, { unique: true, name: "UNIQUE_EMAIL" })
                         resolve(DBAccess.ModelInstance);
                     }
                 );

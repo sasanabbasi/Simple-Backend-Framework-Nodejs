@@ -95,7 +95,8 @@ export class CustomersController {
 
     getAllByPagination = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            let result = await this.manager.getAllByPagination(parseInt(req.params.skip), parseInt(req.params.take), req.body);
+            let item: PaginationCustomerDto = req.body;
+            let result = await this.manager.getAllByPagination(parseInt(req.params.skip), parseInt(req.params.take), item);
             ResponseHandler(res, result, null, this.source, this.destination)
         }
         catch (err) {

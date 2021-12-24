@@ -1,0 +1,6 @@
+FROM node:14
+ENV TZ=Asia/Tehran
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+WORKDIR /usr/app/core
+COPY . .
+RUN npm i --save && npm install -g nodemon ts-node pm2
