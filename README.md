@@ -19,6 +19,12 @@ Simple Create CRUD using Nodejs + Express + Mongodb + Typescript + Validation + 
 For Run the Project:
 
 ```
+npm start
+```
+
+OR
+
+```
 docker-compose up
 ```
 
