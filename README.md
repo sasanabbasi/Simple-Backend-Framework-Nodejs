@@ -1,6 +1,6 @@
-# Sasan Abbasi Code Test
+# Typescript Framework
 
-Simple Create CRUD using Nodejs + Express + Mongodb + Typescript
+Simple Create CRUD using Nodejs + Express + Mongodb + Typescript + Validation + Auto Mapper + Middlewares
 
 - **TDD**: Using Superagent and Mocha
 
